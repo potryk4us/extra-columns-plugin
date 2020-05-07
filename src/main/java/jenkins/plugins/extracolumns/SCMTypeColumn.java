@@ -47,7 +47,14 @@ public class SCMTypeColumn extends ListViewColumn {
     public String getScmType(@SuppressWarnings("rawtypes") Job job) {
         if(job instanceof AbstractProject<?, ?>) {
             AbstractProject<?, ?> project = (AbstractProject<?, ?>) job;
-            return project.getScm().getDescriptor().getDisplayName();
+            if(project instanceof hudson.plugins.git.GitSCM)
+            {
+                project.getUserRemoteConfigs().each{
+                    println it.getUrl()
+                }
+            } else {
+                return project.getScm().getDescriptor().getDisplayName();
+            }
         } else {
             String simpleName = job.getClass().getSimpleName();
             if ("WorkflowJob".equals(simpleName)) {

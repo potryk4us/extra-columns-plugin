@@ -49,9 +49,7 @@ public class SCMTypeColumn extends ListViewColumn {
             AbstractProject<?, ?> project = (AbstractProject<?, ?>) job;
             if(project instanceof hudson.plugins.git.GitSCM)
             {
-                project.getUserRemoteConfigs().each{
-                    return it.getUrl();
-                }
+                return project.getScm().getUserRemoteConfigs().getUrl();
             } else {
                 return project.getScm().getDescriptor().getDisplayName();
             }

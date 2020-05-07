@@ -50,7 +50,7 @@ public class SCMTypeColumn extends ListViewColumn {
             if(project instanceof hudson.plugins.git.GitSCM)
             {
                 project.getUserRemoteConfigs().each{
-                    println it.getUrl()
+                    return it.getUrl();
                 }
             } else {
                 return project.getScm().getDescriptor().getDisplayName();

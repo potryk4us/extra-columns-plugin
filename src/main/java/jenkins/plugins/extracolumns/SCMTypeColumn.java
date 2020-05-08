@@ -60,7 +60,7 @@ public class SCMTypeColumn extends ListViewColumn {
                     }
                     StringBuffer sb = new StringBuffer();
                     for (SCM scm : scms) {
-                        sb.append(scm.getUserRemoteConfigs() + "\n");
+                        sb.append(scm.userRemoteConfigs.toString() + "\n");
                     }
                     return sb.toString();
                 }

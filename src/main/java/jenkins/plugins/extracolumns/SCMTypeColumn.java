@@ -47,7 +47,7 @@ public class SCMTypeColumn extends ListViewColumn {
     public String getScmType(@SuppressWarnings("rawtypes") Job job) {
         if(job instanceof AbstractProject<?, ?>) {
             AbstractProject<?, ?> project = (AbstractProject<?, ?>) job;
-            return project.getScm().getUserRemoteConfigs()[0].getUrl();
+            return project.getScm().getDescriptor().getDisplayName();
         } else {
             String simpleName = job.getClass().getSimpleName();
             if ("WorkflowJob".equals(simpleName)) {
@@ -60,7 +60,7 @@ public class SCMTypeColumn extends ListViewColumn {
                     }
                     StringBuffer sb = new StringBuffer();
                     for (SCM scm : scms) {
-                        sb.append(scm.getDescriptor().getDisplayName() + "\n");
+                        sb.append(scm.getDescriptor().getDisplayName() + "qwTEST\n");
                     }
                     return sb.toString();
                 }
